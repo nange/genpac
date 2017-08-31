@@ -4,7 +4,7 @@
 
 基于gfwlist的多种代理软件配置文件生成工具，支持自定义规则，目前可生成的格式有pac, dnsmasq, wingy。
 
-声明：此项目fork自https://github.com/JinnLynn/genpac, 为针对[easyss](github.com/nange/easyss)项目,模板做了略微改动。
+声明：此项目fork自https://github.com/JinnLynn/genpac, 为针对[easyss](https://github.com/nange/easyss)项目,模板做了略微改动。
 
 ### 安装
 
