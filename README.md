@@ -4,18 +4,16 @@
 
 基于gfwlist的多种代理软件配置文件生成工具，支持自定义规则，目前可生成的格式有pac, dnsmasq, wingy。
 
+声明：此项目fork自https://github.com/JinnLynn/genpac, 为针对[easyss](github.com/nange/easyss)项目,模板做了略微改动。
+
 ### 安装
 
 ```shell
 # 安装
-$ pip install genpac
-# 或从github安装开发版本
-$ pip install https://github.com/JinnLynn/genpac/archive/master.zip
+$ pip install https://github.com/nange/genpac/archive/master.zip
 
 # 更新
-$ pip install --upgrade genpac
-# 或从github更新开发版本
-$ pip install --upgrade https://github.com/JinnLynn/genpac/archive/master.zip
+$ pip install --upgrade https://github.com/nange/genpac/archive/master.zip
 
 # 卸载
 $ pip uninstall genpac
