@@ -5,6 +5,7 @@
  * GFWList From: __GFWLIST_FROM__
  */
 
+var global = {{.Global}}
 var proxy = '__PROXY__';
 var rules = __RULES__;
 
@@ -20,6 +21,9 @@ function FindProxyForURL(url, host) {
 }
 
 function testHost(host, index) {
+    if (global) {
+        return proxy;
+    }
     for (var i = 0; i < rules[index].length; i++) {
         for (var j = 0; j < rules[index][i].length; j++) {
             lastRule = rules[index][i][j]
