@@ -2,8 +2,8 @@
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
-__version__ = '2.0b1'
-__author__ = 'JinnLynn <eatfishlin@gmail.com>'
+__version__ = '2.0'
+__author__ = 'LanceLi <cctonange@gmail.com>'
 __license__ = 'The MIT License'
 __copyright__ = 'Copyright 2013-2017 JinnLynn'
 
