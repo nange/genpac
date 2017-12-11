@@ -13,7 +13,10 @@ var lastRule = '';
 
 function FindProxyForURL(url, host) {
     if (host.indexOf('localhost') != -1 || host.indexOf('127.0.0.1') != -1) {
-        return 'DIRECT';
+        return  'DIRECT';
+    }
+    if (isPrivateIP(host)) {
+        return  'DIRECT';
     }
     for (var i = 0; i < rules.length; i++) {
         ret = testHost(host, i);
@@ -26,6 +29,9 @@ function FindProxyForURL(url, host) {
 function testHost(host, index) {
     if (host.indexOf('localhost') != -1 || host.indexOf('127.0.0.1') != -1) {
         return 'DIRECT';
+    }
+    if (isPrivateIP(host)) {
+        return  'DIRECT';
     }
     if (global) {
         return proxy;
@@ -52,3 +58,56 @@ if (!String.prototype.endsWith) {
         return lastIndex !== -1 && lastIndex === position;
   };
 }
+
+function isPrivateIP(ip) {
+	if (!isIP(ip)) {
+		return false;
+	}
+	if (isAIP(ip) || isBIP(ip) || isCIP(ip)) {
+		return true;
+	}
+	return false;
+}
+
+function isIP(ip) {
+	var ipreg =  /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}$/;
+	if (ipreg.test(ip)) {
+		return true;
+	}
+	return false;
+}
+
+function isAIP(ip) {
+	// A类ip：10.0.0.0-10.255.255.255
+	var ipitems = ip.split('.');
+	if (parseInt(ipitems[0]) != 10) {
+		return false;
+	}
+	return true;
+}
+
+function isBIP(ip) {
+	// B类ip：172.16.0.0-172.31.255.255
+	var ipitems = ip.split('.');
+	if (parseInt(ipitems[0]) != 172) {
+		return false;
+	}
+	var second = parseInt(ipitems[1]);
+	if (second < 16 || second > 31) {
+		return false;
+	}
+	return true;
+}
+
+function isCIP(ip) {
+	// C类ip：192.168.0.0-192.168.255.255
+	var ipitems = ip.split('.');
+	if (parseInt(ipitems[0]) != 192) {
+		return false;
+	}
+	if (parseInt(ipitems[1]) != 168) {
+		return false;
+	}
+	return true;
+}
+
