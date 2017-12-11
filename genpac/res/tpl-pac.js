@@ -18,6 +18,9 @@ function FindProxyForURL(url, host) {
     if (isPrivateIP(host)) {
         return  'DIRECT';
     }
+    if (global) {
+        return proxy;
+    }
     for (var i = 0; i < rules.length; i++) {
         ret = testHost(host, i);
         if (ret != undefined)
@@ -27,15 +30,6 @@ function FindProxyForURL(url, host) {
 }
 
 function testHost(host, index) {
-    if (host.indexOf('localhost') != -1 || host.indexOf('127.0.0.1') != -1) {
-        return 'DIRECT';
-    }
-    if (isPrivateIP(host)) {
-        return  'DIRECT';
-    }
-    if (global) {
-        return proxy;
-    }
     for (var i = 0; i < rules[index].length; i++) {
         for (var j = 0; j < rules[index][i].length; j++) {
             lastRule = rules[index][i][j]
