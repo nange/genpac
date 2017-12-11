@@ -175,6 +175,9 @@ genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --gfwlist-local=~/gfwlis
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --gfwlist-disabled --user-rule-from=~/user-rule.txt
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --gfwlist-url=- --user-rule-from=~/user-rule.txt
 
+# Easyss项目生成方式 
+genpac --format=pac --pac-proxy="SOCKS5 localhost:{{.Port}}" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" -o pac.txt
+
 # DNSMASQ WINGY格式同样可以使用上述PAC格式中关于gfwlist和自定义规则的参数
 
 # DNSMASQ格式
