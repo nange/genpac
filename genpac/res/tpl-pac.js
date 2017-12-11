@@ -24,6 +24,9 @@ function FindProxyForURL(url, host) {
 }
 
 function testHost(host, index) {
+    if (host.indexOf('localhost') != -1 || host.indexOf('127.0.0.1') != -1) {
+        return 'DIRECT';
+    }
     if (global) {
         return proxy;
     }
